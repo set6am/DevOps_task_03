@@ -10,7 +10,11 @@ partsList=()
 
 
 function get_colors_from_params {
-    for param in $@; do
-        partsList+=(${colorsList[$param]})
+    local -n input_params=$1
+    local -n color_map=$2
+    local -n result_array=$3
+
+    for param in "${input_params[@]}"; do
+        result_array+=("${color_map[$param]}")
     done
 }
