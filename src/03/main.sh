@@ -1,46 +1,18 @@
 #!/bin/bash
 
+input_list_params=("$@")
 . ./system_info.sh
+. ./color_set.sh
 
-WHITE='7'
-RED='1'
-GREEN='2'
-BLUE='4'
-PURPLE='5'
-BLACK='0'
+. ./params_validation.sh
+params_validation $# $@ $1 $2 $3 $4
 
-colorsList=(0 $WHITE $RED $GREEN $BLUE $PURPLE $BLACK)
-partsList=()
-
-VALIDATION_FLAG=0
-if [ $# -ne 4 ]; then
-    VALIDATION_FLAG+=1
-fi
-
-for param in $@; do
-    if [[ ! $param =~ ^[1-6]$ ]]; then
-        VALIDATION_FLAG+=1
-    fi
-done
-
-if [[ $1 -eq $2 || $3 -eq $4 ]]; then
-    VALIDATION_FLAG+=1
-fi
+. ./colored_output.sh
 
 if [ $VALIDATION_FLAG -eq 0 ]; then
-    for param in $@; do
-        partsList+=(${colorsList[$param]})
-    done
+    get_colors_from_params input_list_params colorsList partsList 
 
-    while IFS= read -r line; do
-        KEY=$(echo "$line" | awk -F" = " '{print $1}')
-        VALUE=$(echo "$line" | awk -F" = " '{print $2}')
-        # echo -e "\033[3${partsList[0]}m\033[4${$partsList[1]}m$KEY\033[0m\033[0m"
-        echo -e -n "\033[3${partsList[0]};4${partsList[1]}m$KEY\033[0m"
-        echo -n " = "
-        echo -e "\033[3${partsList[2]};4${partsList[3]}m$VALUE\033[0m"
-        # echo ${partsList[1]}
-    done <<< "$OUTPUT"
+    output_colored_system_info $partsList $OUTPUT
 else
     echo "Некорректный ввод параметров. 
 
