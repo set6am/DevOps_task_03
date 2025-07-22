@@ -5,8 +5,8 @@ BLUE='4'
 PURPLE='5'
 BLACK='0'
 
-colorsList=(0 $WHITE $RED $GREEN $BLUE $PURPLE $BLACK)
-partsList=()
+colors_list=(0 $WHITE $RED $GREEN $BLUE $PURPLE $BLACK)
+parts_list=()
 
 
 function get_colors_from_params {

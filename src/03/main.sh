@@ -10,7 +10,7 @@ params_validation $# $@ $1 $2 $3 $4
 . ./colored_output.sh
 
 if [ $VALIDATION_FLAG -eq 0 ]; then
-    get_colors_from_params input_list_params colorsList partsList 
+    get_colors_from_params input_list_params colors_list parts_list 
 
     output_colored_system_info $partsList $OUTPUT
 else
