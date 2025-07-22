@@ -15,6 +15,6 @@ function get_colors_from_params {
     local -n result_array=$3
 
     for param in "${input_params[@]}"; do
-        result_array+=("${color_map[$param]}")
+        result_array+=(${color_map[$param]})
     done
 }
