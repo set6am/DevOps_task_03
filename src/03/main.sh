@@ -1,15 +1,22 @@
 #!/bin/bash
 
 input_list_params=("$@")
+params_num=$#
+par1=$1
+par2=$2
+par3=$3
+par4=$4
+
 . ./system_info.sh
 . ./color_set.sh
 
 . ./params_validation.sh
-params_validation $# $@ $1 $2 $3 $4
+params_validation params_num input_list_params par1 par2 par3 par4
+validation_flag=$?
 
 . ./colored_output.sh
 
-if [ $VALIDATION_FLAG -eq 0 ]; then
+if [ $validation_flag -eq 0 ]; then
     get_colors_from_params input_list_params colors_list parts_list 
 
     output_colored_system_info $partsList $OUTPUT
