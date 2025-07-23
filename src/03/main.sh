@@ -19,7 +19,7 @@ validation_flag=$?
 if [ $validation_flag -eq 0 ]; then
     get_colors_from_params input_list_params colors_list parts_list 
 
-    output_colored_system_info $partsList $OUTPUT
+    output_colored_system_info parts_list OUTPUT
 else
     echo "Некорректный ввод параметров. 
 
