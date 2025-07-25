@@ -1,10 +1,11 @@
 #!/bin/bash
 
 params_num=4
-par1=$(cat color_set.cfg | grep "column1_background" | awk -F"=" '{print $2}')
-par2=$(cat color_set.cfg | grep "column1_font_color" | awk -F"=" '{print $2}')
-par3=$(cat color_set.cfg | grep "column2_background" | awk -F"=" '{print $2}')
-par4=$(cat color_set.cfg | grep "column2_font_color" | awk -F"=" '{print $2}')
+
+par1=$(awk -F= '/column1_background/ {print $2}' color_set.cfg)
+par2=$(awk -F= '/column1_font_color/ {print $2}' color_set.cfg)
+par3=$(awk -F= '/column2_background/ {print $2}' color_set.cfg)
+par4=$(awk -F= '/column2_font_color/ {print $2}' color_set.cfg)
 
 input_list_params=("$par1" "$par2" "$par3" "$par4")
 
