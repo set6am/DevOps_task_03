@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
+
 params_num=4
 
 par1=$(awk -F= '/column1_background/ {print $2}' color_set.cfg)
