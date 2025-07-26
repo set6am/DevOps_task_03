@@ -25,14 +25,13 @@ IFS=$'\n\t'
 # ---------ОПИСАНИЕ СКРИПТА---------
 
 
-params_num=4
-
-par1=$(awk -F= '/column1_background/ {print $2}' color_set.cfg)
-par2=$(awk -F= '/column1_font_color/ {print $2}' color_set.cfg)
-par3=$(awk -F= '/column2_background/ {print $2}' color_set.cfg)
-par4=$(awk -F= '/column2_font_color/ {print $2}' color_set.cfg)
-
-input_list_params=("$par1" "$par2" "$par3" "$par4")
+# получаем цвета из конфига и проверяем все ли цвета указаны
+. ./cfg_colors.sh
+# глобальные переменные:
+# - color_cfg_dict (ассоциативный массив, содержит данные из color_set.cfg)
+# - default_colors (флаг, показывающий используются ли дефолтные значения цветов)
+cfg_colors__convert_to_dict
+cfg_colors__check_empty_values
 
 . ./system_info.sh
 . ./color_set.sh
