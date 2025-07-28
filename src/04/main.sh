@@ -39,7 +39,11 @@ cfg_colors__check_empty_values
 # - system_info (строковая переменная содержащая информацию о системе)
 system_info__get
 
-. ./color_set.sh
+# получаем аттрибуты выбранных цетов (номер, имя, код)
+. ./colors_attrs.sh
+# глобальные переменные:
+# - selected_colors_code (код цветов, выбранных ранее)
+# - selected_colors_name (название цветов, выбранных ранее)
 
 . ./params_validation.sh
 params_validation input_list_params par1 par2 par3 par4
@@ -48,7 +52,7 @@ validation_flag=$?
 . ./colored_output.sh
 
 if [ $validation_flag -eq 0 ]; then
-    get_colors_from_params input_list_params colors_list parts_list 
+    colors_attrs__get color_cfg_dict
 
     output_colored_system_info parts_list OUTPUT
 else
