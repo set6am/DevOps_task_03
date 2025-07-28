@@ -33,7 +33,12 @@ IFS=$'\n\t'
 cfg_colors__convert_to_dict
 cfg_colors__check_empty_values
 
+# получаем информацию о системе
 . ./system_info.sh
+# глобальные переменные:
+# - system_info (строковая переменная содержащая информацию о системе)
+system_info__get
+
 . ./color_set.sh
 
 . ./params_validation.sh
