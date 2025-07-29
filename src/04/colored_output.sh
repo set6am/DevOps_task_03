@@ -1,15 +1,19 @@
+#!/usr/bin/env bash
 
-function output_colored_system_info {
-    local -n result_array=$1
-    local -n output_system_info=$2
+# функция красит текст и выводит в консоль
+function colored_output__system_info {
+    local -n color_codes=$1
+    local -n system_info_data=$2
 
-    while IFS= read -r line; do
-        KEY=$(echo "$line" | awk -F" = " '{print $1}')
-        VALUE=$(echo "$line" | awk -F" = " '{print $2}')
-        # echo -e "\033[3${partsList[0]}m\033[4${$partsList[1]}m$KEY\033[0m\033[0m"
-        echo -e -n "\033[3${result_array[0]};4${result_array[1]}m$KEY\033[0m"
+    local color_fg1="3${color_codes[1]}"
+    local color_bg1="4${color_codes[0]}"
+    local color_fg2="3${color_codes[3]}"
+    local color_bg2="4${color_codes[2]}"
+    local reset="\033[0m"
+
+    while IFS=' = ' read -r KEY VALUE; do
+        echo -e -n "\033[${color_fg1};${color_bg1}m$KEY${reset}"
         echo -n " = "
-        echo -e "\033[3${result_array[2]};4${result_array[3]}m$VALUE\033[0m"
-        # echo ${partsList[1]}
-    done <<< "$output_system_info"
+        echo -e "\033[${color_fg2};${color_bg2}m$VALUE${reset}"
+    done <<< "$system_info_data"
 }
