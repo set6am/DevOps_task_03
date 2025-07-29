@@ -50,12 +50,13 @@ system_info__get
 params_validation__get_flag color_cfg_dict
 validation_flag=$?
 
+# красим и выводим в терминал системную информацию
 . ./colored_output.sh
 
 if [ $validation_flag -eq 0 ]; then
     colors_attrs__get color_cfg_dict
 
-    output_colored_system_info parts_list OUTPUT
+    colored_output__system_info selected_colors_code system_info
 else
     echo "Некорректный ввод параметров в конфигурацию. 
 
