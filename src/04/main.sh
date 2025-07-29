@@ -45,8 +45,9 @@ system_info__get
 # - selected_colors_code (код цветов, выбранных ранее)
 # - selected_colors_name (название цветов, выбранных ранее)
 
+# валидируем номера цветов из конфига
 . ./params_validation.sh
-params_validation input_list_params par1 par2 par3 par4
+params_validation__get_flag color_cfg_dict
 validation_flag=$?
 
 . ./colored_output.sh
