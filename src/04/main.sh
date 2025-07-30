@@ -47,15 +47,17 @@ system_info__get
 
 # валидируем номера цветов из конфига
 . ./params_validation.sh
-params_validation__get_flag color_cfg_dict
-validation_flag=$?
+validation_flag=$(params_validation__get_flag color_cfg_dict) # это работает в связке с echo
+# validation_flag=$?    почему то не срабатывает через return
 
 # красим и выводим в терминал системную информацию
 . ./colored_output.sh
 
 if [ $validation_flag -eq 0 ]; then
     color_attrs__get color_cfg_dict
+
     colored_output__system_info selected_colors_code system_info
+    echo " "
     color_attrs__output default_colors color_cfg_dict
 else
     echo "Некорректный ввод параметров в конфигурацию. 

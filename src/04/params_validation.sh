@@ -15,6 +15,7 @@ function params_validation__get_flag {
         "column2_font_color"
     )
 
+    
     # проверка на ввод цифр от 1 до 6
     for key in "${colors_keys[@]}"; do
         if [[ ! "${used_colors_nums[$key]}" =~ ^[1-6]$ ]]; then
@@ -29,12 +30,13 @@ function params_validation__get_flag {
     
     # проверка на совпадение цветов текста и фона
     for pair in "${bg_fg_pairs[@]}"; do
-        read -r bg fg <<< "$pair"
+        IFS=" " read -r bg fg <<< "$pair"
         if [[ "${used_colors_nums[$bg]}" == "${used_colors_nums[$fg]}" ]]; then
             (( validation_flag++ ))
         fi
     done
 
-    return $validation_flag
+    echo "$validation_flag"
+    # return $validation_flag    почему то не работает с validation_flag=$? после вызова функции
 }
 
