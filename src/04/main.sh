@@ -55,8 +55,8 @@ validation_flag=$?
 
 if [ $validation_flag -eq 0 ]; then
     colors_attrs__get color_cfg_dict
-
     colored_output__system_info selected_colors_code system_info
+    colors_attrs__output default_colors color_cfg_dict
 else
     echo "Некорректный ввод параметров в конфигурацию. 
 
