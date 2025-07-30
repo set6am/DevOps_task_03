@@ -23,5 +23,6 @@ function cfg_colors__check_empty_values {
             default_colors=1
             break
         fi
+    done
 }
 
