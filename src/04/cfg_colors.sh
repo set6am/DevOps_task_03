@@ -13,8 +13,8 @@ function cfg_colors__convert_to_dict {
 
 # валидация на пустые значения в конфиге
 function cfg_colors__check_empty_values {
-    for value in ${color_cfg_dict[@]}; do
-        if [[ $value == '' ]]; then
+    for value in "${color_cfg_dict[@]}"; do
+        if [[ -z "$value" ]]; then
             color_cfg_dict[column1_background]=6 # black
             color_cfg_dict[column1_font_color]=1 # white
             color_cfg_dict[column2_background]=2 # red
