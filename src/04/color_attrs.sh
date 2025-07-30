@@ -5,7 +5,7 @@ selected_colors_code=() # код цветов, выбранных ранее
 selected_colors_name=() # название цветов, выбранных ранее
 
 # функция получения аттрибутов выбранных цветов
-function colors_attrs__get {
+function color_attrs__get {
     local WHITE='7'
     local RED='1'
     local GREEN='2'
@@ -33,7 +33,7 @@ function colors_attrs__get {
     done
 }
 
-function colors_attrs__output {
+function color_attrs__output {
     local -n default_colors_flag=$1
     local -n used_colors_nums=$2
 

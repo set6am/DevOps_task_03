@@ -40,7 +40,7 @@ cfg_colors__check_empty_values
 system_info__get
 
 # получаем аттрибуты выбранных цетов (номер, имя, код)
-. ./colors_attrs.sh
+. ./color_attrs.sh
 # глобальные переменные:
 # - selected_colors_code (код цветов, выбранных ранее)
 # - selected_colors_name (название цветов, выбранных ранее)
@@ -54,9 +54,9 @@ validation_flag=$?
 . ./colored_output.sh
 
 if [ $validation_flag -eq 0 ]; then
-    colors_attrs__get color_cfg_dict
+    color_attrs__get color_cfg_dict
     colored_output__system_info selected_colors_code system_info
-    colors_attrs__output default_colors color_cfg_dict
+    color_attrs__output default_colors color_cfg_dict
 else
     echo "Некорректный ввод параметров в конфигурацию. 
 
